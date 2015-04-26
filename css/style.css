@@ -1,0 +1,10 @@
+#contacts-block {
+	border: 1px solid #ccc;
+}
+#contact-details-block {
+	border: 1px solid #ccc;
+	min-height: 300px;
+}
+.list-group-item:hover {
+	background-color: #ccc;
+}
