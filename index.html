@@ -13,9 +13,9 @@
    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
    <!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	 <![endif]-->
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+   <![endif]-->
 </head>
 
 <body>
@@ -25,11 +25,36 @@
       </div>
       <div class="row">
          <div id="contact-details-block" class="col-md-9 col-md-push-3">
-         	<h2 class="text-center">Oleksandr Tsukur's Info</h2>
-         	<p>Email: oleksandrtsukur@example.com</p>
-         	<p>Phone: (093) 123 42 34</p>
+          <h2>Oleksandr Tsukur's Info</h2>
+          <p>Email: oleksandrtsukur@example.com</p>
+          <p>Phone: (093) 123 42 34</p>
          </div>
          <div id="contacts-block" class="col-md-3 col-md-pull-9">
+
+<!-- Search input-->
+<div class="control-group">
+  <label class="control-label" for="searchinput"></label>
+  <div class="controls">
+    <input id="searchinput" name="searchinput" type="text" placeholder="Search your contacts" class="input-xlarge search-query">
+  </div>
+</div>
+<!-- Search input end.-->
+
+<!-- Block groups -->
+<div class="control-group">
+  <label class="control-label" for="selectmultiple"></label>
+  <div class="controls">
+    <select id="selectmultiple" name="selectmultiple" class="input-large" multiple="multiple">
+      <option>My favorites</option>
+      <option>All contacts</option>
+      <option>Co-workers</option>
+      <option>Family</option>
+      <option>Friends</option>
+    </select>
+  </div>
+</div>
+<!-- Block groups end. -->
+
             <h2>Contacts</h2>
             <ul class="list-group">
                <li class="list-group-item">Oleksandr Tsukur</li>
@@ -38,15 +63,9 @@
                <li class="list-group-item">Uncle Sasha</li>
                <li class="list-group-item">Valentina Tsukur</li>
             </ul>
-            <p>
-            <button class="btn btn-success" onclick="">Add new contact</button>
-            <button class="btn btn-danger" onclick="">Delete contact</button>
-
-
-
-
-
-            </p>
+            <p class="button">
+            <button type="button" class="btn btn-success">Add new contact</button>
+            <button type="button" class="btn btn-danger">Delete contact</button>
          </div>
       </div>
    </div>

@@ -3,7 +3,7 @@
 }
 #contact-details-block {
 	border: 1px solid #ccc;
-	min-height: 327px;
+	min-height: 471px;
 }
 .list-group-item:hover {
 	background-color: #ccc;
@@ -13,6 +13,15 @@ h2, h1 {
 	text-align: center;
 }
 
-.pcenter {
+.button {
 	text-align: center;
+}
+
+#selectmultiple {
+	width: 260px;
+	vertical-align: middle;
+}
+
+#searchinput {
+	width: 260px;
 }
