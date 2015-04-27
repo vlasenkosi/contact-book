@@ -3,8 +3,16 @@
 }
 #contact-details-block {
 	border: 1px solid #ccc;
-	min-height: 300px;
+	min-height: 327px;
 }
 .list-group-item:hover {
 	background-color: #ccc;
+}
+
+h2, h1 {
+	text-align: center;
+}
+
+.pcenter {
+	text-align: center;
 }
