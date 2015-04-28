@@ -21,48 +21,57 @@
 <body>
    <div class="container">
       <div class="page-header">
-         <h1>Sergey's contact book</h1>
+         <h3>Sergey's contact book</h3>
       </div>
       <div class="row">
+      <!-- user info-->
          <div id="contact-details-block" class="col-md-9 col-md-push-3">
-          <h2>Oleksandr Tsukur's Info</h2>
-          <p>Email: oleksandrtsukur@example.com</p>
-          <p>Phone: (093) 123 42 34</p>
+          <div class="myadress">
+          <h2>Oleksandr Tsukur</h2>
+          <strong>Details:</strong><br>
+          Adress: San Francisco, CA 94107<br>
+          Phone: (123) 456-7890
+          </address>
+          <address>
+          <strong>E-mail:</strong><br>
+          <a href="mailto:#">tsukor@gmail.com</a>
+    </address>
+    </div>
+      <!-- user info end.-->
          </div>
          <div id="contacts-block" class="col-md-3 col-md-pull-9">
 
 <!-- Search input-->
-<div class="control-group">
-  <label class="control-label" for="searchinput"></label>
-  <div class="controls">
-    <input id="searchinput" name="searchinput" type="text" placeholder="Search your contacts" class="input-xlarge search-query">
-  </div>
+<p>
+<div class="right-inner-addon ">
+    <i class="icon-search"></i>
+    <input type="search"
+           class="form-control" 
+           placeholder="Search" />
 </div>
+</p>
 <!-- Search input end.-->
 
 <!-- Block groups -->
-<div class="control-group">
-  <label class="control-label" for="selectmultiple"></label>
-  <div class="controls">
-    <select id="selectmultiple" name="selectmultiple" class="input-large" multiple="multiple">
-      <option>My favorites</option>
-      <option>All contacts</option>
-      <option>Co-workers</option>
-      <option>Family</option>
-      <option>Friends</option>
-    </select>
-  </div>
-</div>
+      <select class="form-control" id="sel1">
+        <option>Oleksandr Tsukur</option>
+        <option>Vlada Boiko</option>
+        <option>Oleksandr Zadorozhko</option>
+        <option>Uncle Sasha</option>
+        <option>Valentina Tsukur</option>
+      </select>
 <!-- Block groups end. -->
 
-            <h2>Contacts</h2>
-            <ul class="list-group">
-               <li class="list-group-item">Oleksandr Tsukur</li>
-               <li class="list-group-item">Vlada Boiko</li>
-               <li class="list-group-item">Oleksandr Zadorozhko</li>
-               <li class="list-group-item">Uncle Sasha</li>
-               <li class="list-group-item">Valentina Tsukur</li>
-            </ul>
+<!-- list-group. -->
+ <h4>Contacts</h4>
+<div class="list-group">
+  <a href="#" class="list-group-item">Oleksandr Tsukur</a>
+  <a href="#" class="list-group-item">Vlada Boiko</a>
+  <a href="#" class="list-group-item">Oleksandr Zadorozhko</a>
+  <a href="#" class="list-group-item">Uncle Sasha</a>
+  <a href="#" class="list-group-item">Valentina Tsukur</a>
+</div>
+<!-- list-group end. -->
             <p class="button">
             <button type="button" class="btn btn-success">Add new contact</button>
             <button type="button" class="btn btn-danger">Delete contact</button>

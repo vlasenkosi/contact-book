@@ -3,14 +3,19 @@
 }
 #contact-details-block {
 	border: 1px solid #ccc;
-	min-height: 471px;
+	min-height: 399px;
 }
 .list-group-item:hover {
 	background-color: #ccc;
 }
 
-h2, h1 {
+h3 {
 	text-align: center;
+	font-family: italic;
+}
+
+h4, h2 {
+font-family: bold;
 }
 
 .button {
@@ -22,6 +27,20 @@ h2, h1 {
 	vertical-align: middle;
 }
 
-#searchinput {
-	width: 260px;
+.right-inner-addon {
+    position: relative;
+}
+.right-inner-addon input {
+    padding-right: 30px;    
+}
+.right-inner-addon i {
+    position: absolute;
+    right: 0px;
+    padding: 10px 12px;
+    pointer-events: none;
+}
+
+.myadress {
+	padding-right: 30px;
+
 }
