@@ -22,6 +22,9 @@ font-family: bold;
 	text-align: center;
 }
 
+.buttonuser {
+	text-align: right;
+}
 #selectmultiple {
 	width: 260px;
 	vertical-align: middle;
@@ -44,3 +47,5 @@ font-family: bold;
 	padding-right: 30px;
 
 }
+
+

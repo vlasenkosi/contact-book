@@ -24,19 +24,24 @@
          <h3>Sergey's contact book</h3>
       </div>
       <div class="row">
-      <!-- user info-->
          <div id="contact-details-block" class="col-md-9 col-md-push-3">
+      <!-- user info-->
           <div class="myadress">
+          </p><img src="img/unknown_user.png" style="width: 150px; height: 150px" ></p>
           <h2>Oleksandr Tsukur</h2>
           <strong>Details:</strong><br>
           Adress: San Francisco, CA 94107<br>
-          Phone: (123) 456-7890
+          Mobile: (123) 456-7890
           </address>
           <address>
           <strong>E-mail:</strong><br>
-          <a href="mailto:#">tsukor@gmail.com</a>
-    </address>
-    </div>
+          <a href="mailto:#">tsukur@gmail.com</a>
+          </address>
+            <div class="buttonuser">
+            <button type="button" class="btn btn-primary">Edit</button>
+            <button type="button" class="btn btn-danger">Delete</button>
+            </div>
+          </div>
       <!-- user info end.-->
          </div>
          <div id="contacts-block" class="col-md-3 col-md-pull-9">
@@ -54,11 +59,11 @@
 
 <!-- Block groups -->
       <select class="form-control" id="sel1">
-        <option>Oleksandr Tsukur</option>
-        <option>Vlada Boiko</option>
-        <option>Oleksandr Zadorozhko</option>
-        <option>Uncle Sasha</option>
-        <option>Valentina Tsukur</option>
+        <option>All contacts</option>
+        <option>Family</option>
+        <option>Co-workers</option>
+        <option>Clients</option>
+        <option>Friends</option>
       </select>
 <!-- Block groups end. -->
 
@@ -74,7 +79,6 @@
 <!-- list-group end. -->
             <p class="button">
             <button type="button" class="btn btn-success">Add new contact</button>
-            <button type="button" class="btn btn-danger">Delete contact</button>
          </div>
       </div>
    </div>
