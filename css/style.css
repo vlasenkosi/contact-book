@@ -22,7 +22,7 @@ font-family: bold;
 	text-align: center;
 }
 
-.buttonuser {
+.button-user {
 	text-align: right;
 }
 #selectmultiple {
@@ -43,7 +43,7 @@ font-family: bold;
     pointer-events: none;
 }
 
-.myadress {
+.my-adress {
 	padding-right: 30px;
 
 }

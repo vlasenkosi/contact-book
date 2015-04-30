@@ -26,20 +26,18 @@
       <div class="row">
          <div id="contact-details-block" class="col-md-9 col-md-push-3">
       <!-- user info-->
-          <div class="myadress">
+          <div class="my-adress">
           </p><img src="img/unknown_user.png" style="width: 150px; height: 150px" ></p>
           <h2>Oleksandr Tsukur</h2>
           <strong>Details:</strong><br>
-          Adress: San Francisco, CA 94107<br>
-          Mobile: (123) 456-7890
-          </address>
-          <address>
+          <div id="adress">Adress: San Francisco, CA 94107</div>
+          <div id="mobile">Mobile: (123) 456-7890</div>
           <strong>E-mail:</strong><br>
-          <a href="mailto:#">tsukur@gmail.com</a>
+          <div id="email">tsukur@gmail.com</div>
           </address>
-            <div class="buttonuser">
-            <button type="button" class="btn btn-primary">Edit</button>
-            <button type="button" class="btn btn-danger">Delete</button>
+            <div class="button-user">
+            <button id="button-edit" type="button" class="btn btn-primary">Edit</button>
+            <button id="button-delete" type="button" class="btn btn-danger">Delete</button>
             </div>
           </div>
       <!-- user info end.-->
@@ -54,6 +52,7 @@
            class="form-control" 
            placeholder="Search" />
 </div>
+
 </p>
 <!-- Search input end.-->
 
@@ -70,15 +69,15 @@
 <!-- list-group. -->
  <h4>Contacts</h4>
 <div class="list-group">
-  <a href="#" class="list-group-item">Oleksandr Tsukur</a>
-  <a href="#" class="list-group-item">Vlada Boiko</a>
-  <a href="#" class="list-group-item">Oleksandr Zadorozhko</a>
-  <a href="#" class="list-group-item">Uncle Sasha</a>
-  <a href="#" class="list-group-item">Valentina Tsukur</a>
+  <div class="list-group-item active">Oleksandr Tsukur</div>
+  <div class="list-group-item">Vlada Boiko</div>
+  <div class="list-group-item">Oleksandr Zadorozhko</div>
+  <div class="list-group-item">Uncle Sasha</div>
+  <div class="list-group-item">Valentina Tsukur</div>
 </div>
 <!-- list-group end. -->
             <p class="button">
-            <button type="button" class="btn btn-success">Add new contact</button>
+            <button id="add-contact" type="button" class="btn btn-success">Add new contact</button>
          </div>
       </div>
    </div>
@@ -86,5 +85,6 @@
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
    <!-- Include all compiled plugins (below), or include individual files as needed -->
    <script src="js/bootstrap.min.js"></script>
+   <script src="js/main.js"></script>
 </body>
 </html>
