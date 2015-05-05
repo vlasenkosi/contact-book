@@ -47,5 +47,14 @@ font-family: bold;
 	padding-right: 30px;
 
 }
+.list-group-item.active, .list-group-item.active:hover {
+	background: #0aa;
+}
 
+#contact-form {
+	margin-top: 20px;
+}
 
+#group-add {
+  .pull-right();
+}
