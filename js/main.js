@@ -32,6 +32,7 @@ jQuery(function($) {
 
 
 
+
     // selects contact on click
     $('.list-group').on('click', '.list-group-item', function() {
         // console.log(this);
@@ -219,9 +220,10 @@ jQuery(function($) {
 
     });
 
-    // Add new group
+    // Add new group button
     $('#add-group').on('click', function() {
         $('.group-create').removeClass('hidden');
+        });
         $('#button-add-group').on('click', function() {
             var name = $("#group-form").val(),
                 new_group_html = '<option value="' + name + '">' + name + '</option>';
@@ -229,11 +231,20 @@ jQuery(function($) {
             $('#contact-form-group-select').append(new_group_html);
             $('#group-form').val(' ');
             $('.group-create').addClass('hidden');
-        });
+        
     });
-    // Delete group
-    // $('#delete-group').on('click', function() {
-    //     var selectedGroup = $('#contact-group-select').val();
-    // });
+    // Delete group button
+    $('#delete-group-button').on('click', function() {
+        $('#contact-group-select').find('option:selected').remove();
+    });
+
 
 });
+
+
+    // Delete group OLD WAY
+    // $('#delete-group-button').on('click', function() {
+    //     var nameVal = $('#contact-group-select').val(),
+    //         nameText = $('#contact-group-select').find('option:selected').text(),
+    //         group_html = '<option value="' + nameVal + '">' + nameText + '</option>';
+    // });
