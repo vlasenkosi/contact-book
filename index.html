@@ -26,64 +26,73 @@
         <div class="row">
             <div id="contact-details-block" class="col-md-9 col-md-push-3">
                 <!-- user info-->
-                <div id="contact-info" class="my-adress">
-                    </p><img src="img/unknown_user.png" style="width: 150px; height: 150px"></p>
-                    <h2>Oleksandr Tsukur</h2>
-                    <strong>Details:</strong>
-                    <br>
-                    <div id="adress">Adress: San Francisco, CA 94107</div>
-                    <div id="mobile">Mobile: (123) 456-7890</div>
-                    <strong>E-mail:</strong>
-                    <br>
-                    <div id="email">tsukur@gmail.com</div>
-                    </address>
-                    <div class="button-user">
-                        <button id="button-edit" type="button" class="btn btn-warning">Edit</button>
-                        <button id="button-delete" type="button" class="btn btn-danger">Delete</button>
-                    </div>
+                <div id="contact-info" class="my-adress hidden">
+                    <section class="flip-container">
+                        <div id="card">
+                            <figure class="front">
+                                <div class="bg-success">
+                                    <h2>Oleksandr Tsukur</h2>
+                                    <br> Address:
+                                    <div id="adress">Adress: San Francisco, CA 94107</div>
+                                    <div id="mobile">Mobile: (123) 456-7890</div>
+                                    <strong>E-mail:</strong>
+                                    <br>
+                                    <div id="email">tsukur@gmail.com</div>
+                                    </address>
+                                    <div class="button-user">
+                                        <button id="button-edit" type="button" class="btn btn-warning">Edit</button>
+                                        <button id="button-delete" type="button" class="btn btn-danger">Delete</button>
+                                    </div>
+                                </div>
+                            </figure>
+                            <figure class="back">
+                                <!--forms-->
+                                <form id="contact-form" class="form-horizontal center-block bg-info">
+                                    <div id="contact-name-alert" class="alert alert-danger text-center hidden" role="alert">This name has already taken</div>
+                                    <div class="form-group">
+                                        <label for="contact-name" class="col-sm-2 control-label">Name:</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="contact_name" class="form-control" id="contact-name" placeholder="Name">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="contact-address" class="col-sm-2 control-label">Address:</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="contact_address" class="form-control" id="contact-address"
+                                            placeholder="Address">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="contact-email" class="col-sm-2 control-label">Email:</label>
+                                        <div class="col-sm-10">
+                                            <input type="email" name="contact_email" class="form-control" id="contact-email"
+                                            placeholder="Email">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="contact-mobile" class="col-sm-2 control-label">Mobile:</label>
+                                        <div class="col-sm-10">
+                                            <input type="tel" name="contact_mobile" class="form-control" id="contact-mobile"
+                                            placeholder="Mobile">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div id="" class="col-sm-10 pull-right">
+                                            <select class="form-control" id="contact-form-group-select">
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <button id="button-save" type="button" class="btn btn-primary">Save</button>
+                                        <button id="button-update" type="button" class="btn btn-info">Update</button>
+                                    </div>
+                                </form>
+                                <!--forms end-->
+                            </figure>
+                        </div>
+                    </section>
                 </div>
-                <!--forms-->
-                <form id="contact-form" class="form-horizontal center-block hidden">
-                    <div class="form-group">
-                        <label for="contact-name" class="col-sm-2 control-label">Name:</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="contact_name" class="form-control" id="contact-name" placeholder="Name">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="contact-address" class="col-sm-2 control-label">Address:</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="contact_address" class="form-control" id="contact-address" placeholder="Address">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="contact-email" class="col-sm-2 control-label">Email:</label>
-                        <div class="col-sm-10">
-                            <input type="email" name="contact_email" class="form-control" id="contact-email" placeholder="Email">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="contact-mobile" class="col-sm-2 control-label">Mobile:</label>
-                        <div class="col-sm-10">
-                            <input type="tel" name="contact_mobile" class="form-control" id="contact-mobile" placeholder="Mobile">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div id="" class="col-sm-10 pull-right">
-                            <select class="form-control" id="contact-form-group-select">
-                                <option value="friend">Family</option>
-                                <option value="co-workers">Co-workers</option>
-                                <option value="clients">Clients</option>
-                                <option value="friends" selected="selected">Friends</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="text-right">
-                        <button id="button-save" type="button" class="btn btn-primary">Save</button>
-                        <button id="button-update" type="button" class="btn btn-info">Update</button>
-                    </div>
-                </form>
-                <!--forms end-->
+                <!-- /#contact-info -->
                 <!-- user info end.-->
             </div>
             <div id="contacts-block" class="col-md-3 col-md-pull-9">
@@ -91,27 +100,18 @@
                 <p>
                     <div class="right-inner-addon">
                         <i class="icon-search"></i>
-                        <input id="contact-search" type="search" class="form-control" placeholder="Search" />
+                        <input id="contact-search" type="search" class="form-control" placeholder="Search"
+                        />
                     </div>
                 </p>
                 <!-- Search input end.-->
                 <!-- Block groups -->
                 <select class="form-control" id="contact-group-select">
-                    <option value="all-contact">All contact</option>
-                    <option value="family">Family</option>
-                    <option value="co-workers">Co-workers</option>
-                    <option value="clients">Clients</option>
-                    <option value="friends">Friends</option>
                 </select>
                 <!-- Block groups end. -->
                 <!-- list-group. -->
                 <h4>Contacts</h4>
                 <div class="list-group">
-                    <div class="list-group-item active" data-address="125 apt. 3 str. CA" data-email="tsukur@gmail.com" data-mobile="093344753" data-group="family, all-contacts">Oleksandr Tsukur</div>
-                    <div class="list-group-item" data-address="53 apt. 34 str NY" data-email="Vlada@vd.com" data-mobile="56656556" data-group="co-workers, all-contacts">Vlada Boiko</div>
-                    <div class="list-group-item" data-address="34 apt. 34 str. SH." data-email="Zador@mail.ru" data-mobile="3434343434" data-group="clients, all-contacts">Oleksandr Zadorozhko</div>
-                    <div class="list-group-item" data-address="33 aptp. 12 str. PN." data-email="Uncle@gmail.com" data-mobile="343555445" data-group="friends, all-contacts">Uncle Sasha</div>
-                    <div class="list-group-item" data-address="24 apt. 234 str. TX" data-email="Valentina@gg.com" data-mobile="+54 5545 5" data-group="co-workers, all-contacts">Valentina Tsukur</div>
                 </div>
                 <!-- list-group end. -->
                 <p class="button">
@@ -122,9 +122,12 @@
                     <button id="delete-group-button" type="button" class="btn btn-danger">Delete group</button>
                 </p>
                 <div class="group-create hidden">
-                    <input type="text" name="group_form" id="group-form" class="form-control" placeholder="Group name">
-                    </p>
-                    <input type="submit" id="button-add-group" class="form-control"></p>
+                    <div class="form-group">
+                        <input type="text" name="group-name-input" id="group-form" class="form-control" placeholder="Group name">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" id="button-add-group" class="form-control">
+                    </div>
                 </div>
             </div>
         </div>

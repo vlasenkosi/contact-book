@@ -1,3 +1,46 @@
+/*===========================================================*/
+/* ================== edit transition =======================*/
+/*===========================================================*/
+
+.flip-container { 
+  /*width: 200px;
+  height: 260px;*/
+  position: relative;
+  perspective: 1200px;
+}
+
+#card {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform .5s ease-out;
+}
+
+#card figure {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+#card .front {
+
+}
+
+#card .back {
+
+  transform: rotateY( 180deg );
+}
+
+#card.flipped {
+  transform: rotateY( 180deg );
+}
+
+/*===========================================================*/
+/*=================== end edit transition ===================*/
+/*===========================================================*/
 #contacts-block {
 	border: 1px solid #ccc;
 	min-height: 480px;
@@ -60,4 +103,8 @@ font-family: bold;
 
 #group-add {
   .pull-right();
+}
+
+address {
+	padding-left;
 }
