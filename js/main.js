@@ -226,14 +226,8 @@ jQuery(function($) {
             group: group
         };
         var index = getContactIndexByName(original_name);
-        console.log(index);
         _contacts[index] = new_contact_object;
-        // delete localStorage['contacts'];
-        console.log(_contacts);
         localStorage['contacts'] = JSON.stringify(_contacts);
-        console.log(localStorage['contacts']);
-        // hide form and update contact info
-        // $('#contact-form').addClass('hidden');
         $('#contact-info').removeClass('hidden');
         $('#card').removeClass('flipped');
 
