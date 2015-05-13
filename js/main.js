@@ -326,9 +326,18 @@ jQuery(function($) {
         $('#new-group-modal').modal('hide');
 
     });
+
     // Focus field
     $('#new-group-modal').on('shown.bs.modal', function() {
         $('#group-input-field').focus();
+    });
+
+    // Create group with enter
+    $('#group-input-field').on('keyup', function(event) {
+        event.preventDefault()
+        if (event.which == 13) {
+            $('#button-group-save').click()
+        };
     });
 
     // Delete group button
