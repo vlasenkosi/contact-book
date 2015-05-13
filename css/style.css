@@ -1,12 +1,14 @@
+@font-face {
+    src: url(fonts/glyphicons-halflings-regular.eot);
+}
+
 /*===========================================================*/
 /* ================== edit transition =======================*/
 /*===========================================================*/
 
 .flip-container { 
-  /*width: 200px;
-  height: 260px;*/
   position: relative;
-  perspective: 1200px;
+  perspective: 800px;
 }
 
 #card {
@@ -14,7 +16,7 @@
   height: 100%;
   position: absolute;
   transform-style: preserve-3d;
-  transition: transform .5s ease-out;
+  transition: transform 1s;
 }
 
 #card figure {
@@ -30,7 +32,6 @@
 }
 
 #card .back {
-
   transform: rotateY( 180deg );
 }
 
@@ -41,14 +42,23 @@
 /*===========================================================*/
 /*=================== end edit transition ===================*/
 /*===========================================================*/
+
+body {
+	background-color: #DFE2DB;
+}
+
 #contacts-block {
 	border: 1px solid #ccc;
 	min-height: 480px;
+	border-radius: 5px;
+	background-color: #F6F6F6;
 }
 #contact-details-block {
 	border: 1px solid #ccc;
 	min-height: 480px;
-
+	border-radius: 5px;
+	background-color: #F6F6F6;
+}
 
 }
 .list-group-item:hover {
@@ -56,8 +66,8 @@
 }
 
 h3 {
-	text-align: center;
-	font-family: italic;
+	font-family: Serif;
+	font-family: i
 }
 
 h4, h2 {
@@ -94,7 +104,7 @@ font-family: bold;
 
 }
 .list-group-item.active, .list-group-item.active:hover {
-	background: #0aa;
+	background: #6DBDD6;
 }
 
 #contact-form {
