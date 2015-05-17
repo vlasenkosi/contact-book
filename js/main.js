@@ -359,14 +359,44 @@ jQuery(function($) {
     });
 
     // Sing up button
-    $('#signup-button').on('click', function(){
+    $('#signup-button').on('click', function() {
         $('#signup-forms').removeClass('hidden');
-
-
-
         $('#contact-info').addClass('hidden');
         $('#contact-form').addClass('hidden');
     });
+
+    // Sign up new user to CB
+    $('#sign-up-button').click(function() {
+        var name = $('#name').val(),
+            email = $('#email').val(),
+            password = $('#password').val()
+
+        if (name.length === 0) {
+            $('#name').parent().addClass('has-error');
+            return;
+        } else {
+            $('#name').parent().removeClass('has-error');
+        }
+        if (email.length === 0) {
+            $('#email').parent().addClass('has-error');
+            return;
+        } else {
+            $('#email').parent().removeClass('has-error');
+        }
+        if (password.length === 0) {
+            $('#password').parent().addClass('has-error');
+            return;
+        } else {
+            $('#password').parent().removeClass('has-error');
+        }
+            $('#signup-forms').addClass('hidden');
+
+            $('#contact-details-block').append('<h1 align="center">Doesn\'t work yet</h1>');
+    });
+
+    // Ajax
+
+
 
     function renderContacts() {
             var i = 0,

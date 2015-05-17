@@ -41,6 +41,8 @@
 
 body {
     background-color: #DFE2DB;
+    overflow:  hidden;
+    
 }
 
 #contacts-block {
