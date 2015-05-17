@@ -48,15 +48,15 @@ jQuery(function($) {
         contact_form_group_input = $('#contact-form-group-select'),
         new_group_input = $('#group-form');
 
-    if(localStorage['contacts'] == undefined){
+    if (localStorage['contacts'] == undefined) {
         localStorage['contacts'] = JSON.stringify(CONTACTS);
-    }else {
+    } else {
         _contacts = JSON.parse(localStorage['contacts']);
     }
 
-    if(localStorage['groups'] == undefined){
+    if (localStorage['groups'] == undefined) {
         localStorage['groups'] = JSON.stringify(GROUPS);
-    }else {
+    } else {
         _groups = JSON.parse(localStorage['groups']);
     }
 
@@ -74,6 +74,8 @@ jQuery(function($) {
         $('.list-group-item').removeClass('active');
         $(this).addClass('active');
         $('.group-create').addClass('hidden');
+        $('#card').removeClass('flipped');
+        $('#signup-forms').addClass('hidden');
         contact_form.addClass('hidden');
         contact_info.removeClass('hidden');
     });
@@ -102,9 +104,11 @@ jQuery(function($) {
 
         contact_form.removeClass('hidden');
         contact_info.addClass('hidden');
+        $('#card').addClass('flipped');
         $('#button-save').removeClass('hidden');
         $('#button-update').addClass('hidden');
         $('.group-create').addClass('hidden');
+        $('#signup-forms').addClass('hidden');
     });
     // Register new contact to CB
     $('#button-save').on('click', function() {
@@ -115,7 +119,7 @@ jQuery(function($) {
             mobile = contact_mobile_input.val(),
             group = contact_form_group_input.val();
         // console.log(name, address, email, mobile);
-        if (name.length === 0 || contactNameExists(name) ) {
+        if (name.length === 0 || contactNameExists(name)) {
             console.error('Please fill name field');
             contact_name_input.parent().addClass('has-error');
             return;
@@ -130,14 +134,14 @@ jQuery(function($) {
         } else {
             contact_address_input.parent().removeClass('has-error');
         }
-        if (email.length === 0 || contactEmailExists(email) ) {
+        if (email.length === 0 || contactEmailExists(email)) {
             console.error('Please fill email field');
             contact_email_input.parent().addClass('has-error');
             return;
         } else {
             contact_email_input.parent().removeClass('has-error');
         }
-        if (mobile.length === 0 || contactMobileExists(mobile) ) {
+        if (mobile.length === 0 || contactMobileExists(mobile)) {
             console.error('Please fill email field');
             contact_mobile_input.parent().addClass('has-error');
             return;
@@ -155,27 +159,32 @@ jQuery(function($) {
         _contacts.push(new_contact_object);
         localStorage['contacts'] = JSON.stringify(_contacts);
         renderContacts();
+
         $('.group-create').addClass('hidden');
         contact_list = $('.list-group-item');
     });
     // Edit contact button
     $('#button-edit').on('click', function() {
+
         var active_item = $('.active');
         var contact_obj = getContactByName(active_item.text());
-
         contact_form.removeClass('hidden');
         // contact_info.addClass('hidden');
         $('#card').addClass('flipped');
-
+        $('#contact-info').addClass('hidden');
         $('#button-save').addClass('hidden');
         $('#button-update').removeClass('hidden');
         $('.group-create').addClass('hidden');
 
-        contact_name_input.val( contact_obj.name );
-        contact_address_input.val( contact_obj.address );
-        contact_email_input.val( contact_obj.email );
-        contact_mobile_input.val( contact_obj.mobile );
-        contact_form_group_input.val( contact_obj.group );
+
+
+        contact_name_input.val(contact_obj.name);
+        contact_address_input.val(contact_obj.address);
+        contact_email_input.val(contact_obj.email);
+        contact_mobile_input.val(contact_obj.mobile);
+        contact_form_group_input.val(contact_obj.group);
+
+
     });
 
     // Update contact info
@@ -187,7 +196,7 @@ jQuery(function($) {
         var mobile = contact_mobile_input.val();
         var group = contact_form_group_input.val();
 
-        if (name.length === 0 ) {
+        if (name.length === 0) {
             console.error('Name field can\'t be blank');
             contact_name_input.parent().addClass('has-error');
             return;
@@ -202,14 +211,14 @@ jQuery(function($) {
         } else {
             contact_address_input.parent().removeClass('has-error');
         }
-        if (email.length === 0 ) {
+        if (email.length === 0) {
             console.error('email field can\'t be blank');
             contact_email_input.parent().addClass('has-error');
             return;
         } else {
             contact_email_input.parent().removeClass('has-error');
         }
-        if (mobile.length === 0 ) {
+        if (mobile.length === 0) {
             console.error('email field can\'t be blank');
             contact_mobile_input.parent().addClass('has-error');
             return;
@@ -226,25 +235,23 @@ jQuery(function($) {
             group: group
         };
         var index = getContactIndexByName(original_name);
-        console.log(index);
         _contacts[index] = new_contact_object;
-        // delete localStorage['contacts'];
-        console.log(_contacts);
         localStorage['contacts'] = JSON.stringify(_contacts);
-        console.log(localStorage['contacts']);
-        // hide form and update contact info
-        // $('#contact-form').addClass('hidden');
-        $('#contact-info').removeClass('hidden');
+        // $('#contact-info').removeClass('hidden');
         $('#card').removeClass('flipped');
+
 
         $('h2').text(name);
         $('#email').text(email);
         $('#adress').text('Adress: ' + address);
         $('#mobile').text('Mobile: ' + mobile);
-        $('.group-create').addClass('hidden');
+
+        $('#contact-form').addClass('hidden');
+        $('#contact-info').removeClass('hidden');
+
     });
     // filter contacts by search term
-    $('#contact-search').on('keyup', function() {
+    $('#contact-search-button').on('click', function() {
         var search_term = $('#contact-search').val();
 
         $('.list-group-item').each(function() {
@@ -256,13 +263,27 @@ jQuery(function($) {
                 $(this).addClass('hidden');
             }
         });
+
+    });
+
+
+    $('#contact-search').on('keyup', function(event) {
+        event.preventDefault()
+        if (event.which == 13) {
+            $('#contact-search-button').click()
+        };
+        if (event.which == 27) {
+            $('#contact-search').val('');
+            $('#contact-search-button').click()
+
+        };
     });
 
     // filter contacts by group name
     $('#contact-group-select').change(function() {
         var selected_group = $("#contact-group-select option:selected").val();
 
-        if('all-contacts' !== selected_group){
+        if ('all-contacts' !== selected_group) {
             _contacts.forEach(function(contact, i) {
                 var group_text = contact.group;
 
@@ -273,27 +294,28 @@ jQuery(function($) {
                 }
 
             });
-        }else{
+        } else {
             $('.list-group-item').removeClass('hidden');
         }
 
     });
 
     // Add new group button
-    $('#add-group').on('click', function() {
-        $('.group-create').removeClass('hidden');
-    });
+    $('#button-group-save').on('click', function() {
 
-    $('#button-add-group').on('click', function() {
-        var name = $("#group-form").val();
+        $('#new-group-modal').on('shown.bs.modal', function() {
+            $('#group-input-field').focus();
+        })
+
+        var name = $('#group-input-field').val();
 
         if (name.trim().length === 0) {
-            $('#group-form').parent().addClass('has-error')
+            $('#group-input-field').parent().addClass('has-error')
             return;
         };
 
         if (groupExists(name)) {
-            $('#group-form').parent().addClass('has-error')
+            $('#group-input-field').parent().addClass('has-error')
             return;
         }
 
@@ -302,8 +324,22 @@ jQuery(function($) {
         _groups.push(name);
         localStorage['groups'] = JSON.stringify(_groups);
         renderGroups();
-        $('#group-form').val('');
-        $('.group-create').addClass('hidden');
+        $('#group-input-field').val('');
+        $('#new-group-modal').modal('hide');
+
+    });
+
+    // Focus field
+    $('#new-group-modal').on('shown.bs.modal', function() {
+        $('#group-input-field').focus();
+    });
+
+    // Create group with enter
+    $('#group-input-field').on('keyup', function(event) {
+        event.preventDefault()
+        if (event.which == 13) {
+            $('#button-group-save').click()
+        };
     });
 
     // Delete group button
@@ -313,28 +349,38 @@ jQuery(function($) {
 
         if ('all-contacts' !== selected) {
             // $('[value="' + selected + '"]').remove()
-            
 
-            _groups.splice( _groups.indexOf(selected) , 1);
+
+            _groups.splice(_groups.indexOf(selected), 1);
             localStorage['groups'] = JSON.stringify(_groups);
             renderGroups();
         }
 
     });
 
-    function renderContacts() {
-        var i = 0,
-            contacts_html = '',
-            len = _contacts.length;
-        while (i < len) {
-            contacts_html += '<div id="' + i + '" class="list-group-item">' + _contacts[i].name + '</div>';
+    // Sing up button
+    $('#signup-button').on('click', function(){
+        $('#signup-forms').removeClass('hidden');
 
-            i++;
+
+
+        $('#contact-info').addClass('hidden');
+        $('#contact-form').addClass('hidden');
+    });
+
+    function renderContacts() {
+            var i = 0,
+                contacts_html = '',
+                len = _contacts.length;
+            while (i < len) {
+                contacts_html += '<div id="' + i + '" class="list-group-item">' + _contacts[i].name + '</div>';
+
+                i++;
+            }
+            // console.log(contacts_html);
+            $('.list-group').html(contacts_html);
         }
-        // console.log(contacts_html);
-        $('.list-group').html(contacts_html);
-    }
-    // @returns Object
+        // @returns Object
     function getContactByName(name) {
         var i = 0;
         while (i < _contacts.length) {
