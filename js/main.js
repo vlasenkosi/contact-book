@@ -75,6 +75,7 @@ jQuery(function($) {
         $(this).addClass('active');
         $('.group-create').addClass('hidden');
         $('#card').removeClass('flipped');
+        $('#signup-forms').addClass('hidden');
         contact_form.addClass('hidden');
         contact_info.removeClass('hidden');
     });
@@ -107,6 +108,7 @@ jQuery(function($) {
         $('#button-save').removeClass('hidden');
         $('#button-update').addClass('hidden');
         $('.group-create').addClass('hidden');
+        $('#signup-forms').addClass('hidden');
     });
     // Register new contact to CB
     $('#button-save').on('click', function() {
@@ -354,6 +356,16 @@ jQuery(function($) {
             renderGroups();
         }
 
+    });
+
+    // Sing up button
+    $('#signup-button').on('click', function(){
+        $('#signup-forms').removeClass('hidden');
+
+
+
+        $('#contact-info').addClass('hidden');
+        $('#contact-form').addClass('hidden');
     });
 
     function renderContacts() {

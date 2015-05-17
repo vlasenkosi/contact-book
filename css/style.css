@@ -99,24 +99,12 @@ h2 {
     padding-right: 30px;
 }
 
-.list-group-item.active:hover {
-    background: #6DBDD6;
-}
-
 .list-group-item:hover {
     background: #6DBDD6;
 }
 
-.list-group-item {
-    /*background-color: ccc;*/
-}
-
 #contact-form {
     margin-top: 20px;
-}
-
-#group-add {
-    .pull-right();
 }
 
 address {
