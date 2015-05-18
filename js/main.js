@@ -360,7 +360,7 @@ jQuery(function($) {
 
 
     // Post new contact
-    $("#signup-contact").submit(function(e) {
+    $("#signup-contact").on('click', function(e) {
         e.preventDefault();
         var userName = $('#user-name').val(),
             userEmail = $('#user-email').val(),
@@ -379,23 +379,26 @@ jQuery(function($) {
             })
             .done(function(res) {
                 var token = res.token
+                httpGetContacts(token);
                 console.log(res);
             });
     });
 
-
     // Get all my contact
-    $.ajax({
-            url: 'http://ec2-52-10-34-194.us-west-2.compute.amazonaws.com/api/contacts',
-            type: 'get',
-            dataType: 'json',
-            headers: {
-                'x-access-token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfX3YiOjAsI…sc2V9.EdcryMnSpQJxNvfgHLoRzVuFBC9lYnmqn9DPL3B9YT8'
-            }
-        })
-        .done(function(res) {
-
-        });
+    function httpGetContacts(token) {
+        $.ajax({
+                url: 'http://ec2-52-10-34-194.us-west-2.compute.amazonaws.com/api/contacts',
+                type: 'get',
+                dataType: 'json',
+                headers: {
+                    'x-access-token': token
+                }
+            })
+            .done(function(res) {
+                _contacts = res.contacts;
+                renderContacts();
+            });
+    }
 
 
     function renderContacts() {
