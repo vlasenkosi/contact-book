@@ -358,44 +358,44 @@ jQuery(function($) {
 
     });
 
-    // Sing up button
-    $('#signup-button').on('click', function() {
-        $('#signup-forms').removeClass('hidden');
-        $('#contact-info').addClass('hidden');
-        $('#contact-form').addClass('hidden');
+
+    // Post new contact
+    $("#signup-contact").submit(function(e) {
+        e.preventDefault();
+        var userName = $('#user-name').val(),
+            userEmail = $('#user-email').val(),
+            userPassword = $('#user-pasword').val()
+
+
+        $.ajax({
+                url: 'http://ec2-52-10-34-194.us-west-2.compute.amazonaws.com/api/signup',
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    name: userName,
+                    email: userEmail,
+                    password: userPassword
+                },
+            })
+            .done(function(res) {
+                var token = res.token
+                console.log(res);
+            });
     });
 
-    // Sign up new user to CB
-    $('#sign-up-button').click(function() {
-        var name = $('#name').val(),
-            email = $('#email').val(),
-            password = $('#password').val()
 
-        if (name.length === 0) {
-            $('#name').parent().addClass('has-error');
-            return;
-        } else {
-            $('#name').parent().removeClass('has-error');
-        }
-        if (email.length === 0) {
-            $('#email').parent().addClass('has-error');
-            return;
-        } else {
-            $('#email').parent().removeClass('has-error');
-        }
-        if (password.length === 0) {
-            $('#password').parent().addClass('has-error');
-            return;
-        } else {
-            $('#password').parent().removeClass('has-error');
-        }
-            $('#signup-forms').addClass('hidden');
+    // Get all my contact
+    $.ajax({
+            url: 'http://ec2-52-10-34-194.us-west-2.compute.amazonaws.com/api/contacts',
+            type: 'get',
+            dataType: 'json',
+            headers: {
+                'x-access-token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfX3YiOjAsI…sc2V9.EdcryMnSpQJxNvfgHLoRzVuFBC9lYnmqn9DPL3B9YT8'
+            }
+        })
+        .done(function(res) {
 
-            $('#contact-details-block').append('<h1 align="center">Doesn\'t work yet</h1>');
-    });
-
-    // Ajax
-
+        });
 
 
     function renderContacts() {
@@ -403,7 +403,7 @@ jQuery(function($) {
                 contacts_html = '',
                 len = _contacts.length;
             while (i < len) {
-                contacts_html += '<div id="' + i + '" class="list-group-item">' + _contacts[i].name + '</div>';
+                contacts_html += '<div id="' + i + '" class="list-group-item hvr-wobble-horizontal">' + _contacts[i].name + '</div>';
 
                 i++;
             }
