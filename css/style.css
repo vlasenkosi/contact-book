@@ -41,8 +41,9 @@
 
 body {
     /*background-color: #f5f5f5;*/
+    
     background-image: url(../img/skulls.png);
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 #contacts-block {
@@ -50,6 +51,7 @@ body {
     min-height: 480px;
     border-radius: 5px;
     background-color: #F6F6F6;
+    box-shadow: 0 2px 25px 0 rgba(208, 12, 12, 0.16);
 }
 
 #contact-details-block {
@@ -57,6 +59,7 @@ body {
     min-height: 480px;
     border-radius: 5px;
     background-color: #F6F6F6;
+    box-shadow: 0 2px 25px 0 rgba(208, 12, 12, 0.16);
 }
 
 h3 {
@@ -201,15 +204,56 @@ address {
 
 .tero {
     font-family: 'Tangerine', serif;
-    font-size: 80px;
+    font-size: 75px;
     /*text-shadow: 4px 4px 4px #aaa;*/
 }
 
 .maingreat {
     font-family: 'Tangerine';
-
 }
 
-.btn-group-sm>.btn, .btn-sm {
-  font-size: 11px;
+.btn-group-sm.btn,
+.btn-sm {
+    font-size: 11px;
+}
+
+.btn-group-vertical>.btn,
+.btn-group>.btn {
+    position: relative;
+}
+
+.my-style {
+    padding: 8px 13px;
+}
+
+.account-wall {
+    padding: 20px 0px 10px 0px;
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 80px 0 rgba(208, 12, 12, 0.16);
+    border-radius: 8px;
+}
+
+.image {
+    margin-top: 20px;
+    width: 150px;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+#user-panel {
+    margin-top: 20px;
+    display: block;
+}
+
+.navbar-text {
+    font-size: 18px;
+    font-family: 'veranda';
+}
+
+#progress {
+    padding-top: 100px;
+    font-size: 45px;
+    font-family: 'Tangerine';
 }

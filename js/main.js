@@ -37,6 +37,7 @@ var CONTACTS = [{
 var _contacts = CONTACTS;
 var GROUPS = ['family', 'co-workers', 'clients', 'friends'];
 var _groups = GROUPS;
+var _token = '';
 
 jQuery(function($) {
     var contact_form = $('#contact-form'),
@@ -159,6 +160,7 @@ jQuery(function($) {
         _contacts.push(new_contact_object);
         localStorage['contacts'] = JSON.stringify(_contacts);
         renderContacts();
+        httpPostContacts(_token, new_contact_object);
 
         $('.group-create').addClass('hidden');
         contact_list = $('.list-group-item');
@@ -342,6 +344,22 @@ jQuery(function($) {
         };
     });
 
+    // Login with enter
+    $('#password-field').on('keyup', function(event) {
+        event.preventDefault()
+        if (event.which == 13) {
+            $('#login-button').click()
+        };
+    });
+
+    // log out button
+    $('#logout-button').on('click', function() {
+        $('#contact-book-con').addClass('hidden');
+        $('#modal-window').removeClass('hidden');
+
+    });
+
+
     // Delete group button
     $('#delete-group-button').on('click', function() {
         var selected = $('#contact-group-select')
@@ -358,6 +376,44 @@ jQuery(function($) {
 
     });
 
+    // Login to CB
+    $('#login-button').on('click', function(e) {
+        e.preventDefault();
+        var userName = $('#login-field').val();
+        var userPassword = $('#password-field').val();
+
+        if (result > 0) {
+            return;
+            // do something if username already exist
+        } else {
+            // do something if username doesn't exist
+        }
+
+        $.ajax({
+                url: 'http://ec2-52-10-34-194.us-west-2.compute.amazonaws.com/api/login',
+                type: 'post',
+                dataType: 'json',
+                cache: false,
+                data: {
+                    name: userName,
+                    password: userPassword
+                },
+            })
+            .done(function(res) {
+                _token = res.token
+                httpGetContacts(_token);
+                console.log(res);
+            }).fail(function(err) {
+                console.log(err);
+            })
+
+        $('#modal-window').addClass('hidden');
+        $('#contact-book-con').removeClass('hidden');
+        $('#navbar-text-id').text('Signed in as ' + userName);
+        $('#login-field').val('');
+        $('#password-field').val('');
+    });
+
 
     // Post new contact
     $("#signup-contact").on('click', function(e) {
@@ -365,6 +421,16 @@ jQuery(function($) {
         var userName = $('#user-name').val(),
             userEmail = $('#user-email').val(),
             userPassword = $('#user-pasword').val()
+
+        if (userName.trim().length === 0) {
+            return;
+        };
+        if (userEmail.trim().length === 0) {
+            return;
+        };
+        if (userPassword.trim().length === 0) {
+            return;
+        };
 
 
         $.ajax({
@@ -378,10 +444,14 @@ jQuery(function($) {
                 },
             })
             .done(function(res) {
-                var token = res.token
-                httpGetContacts(token);
+                _token = res.token
+                httpGetContacts(_token);
                 console.log(res);
             });
+
+
+        $('#modal-window').addClass('hidden');
+        $('#contact-book-con').removeClass('hidden');
     });
 
     // Get all my contact
@@ -400,13 +470,30 @@ jQuery(function($) {
             });
     }
 
+    // Save contact to DB
+    function httpPostContacts(token, data) {
+        $.ajax({
+                url: 'http://ec2-52-10-34-194.us-west-2.compute.amazonaws.com/api/contacts',
+                type: 'post',
+                dataType: 'json',
+                data: data,
+                headers: {
+                    'x-access-token': token
+                }
+            })
+            .done(function(res) {
+                // _contacts = res.contacts;
+                // renderContacts();
+                console.log(res);
+            });
+    }
 
     function renderContacts() {
             var i = 0,
                 contacts_html = '',
                 len = _contacts.length;
             while (i < len) {
-                contacts_html += '<div id="' + i + '" class="list-group-item hvr-wobble-horizontal">' + _contacts[i].name + '</div>';
+                contacts_html += '<div id="' + _contacts[i]._id + '" class="list-group-item hvr-wobble-horizontal">' + _contacts[i].name + '</div>';
 
                 i++;
             }

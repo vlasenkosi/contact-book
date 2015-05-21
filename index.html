@@ -21,7 +21,7 @@
 
 <body>
     <!-- START MODAL LOGIN WINDOW -->
-    <div class="container">
+    <div id="modal-window" class="container">
         <div class="page-header">
             <h3 class="tero" align="center">Welcome to Sergey's contact book</h3>
         </div>
@@ -31,18 +31,18 @@
                     <div id="my-tab-content" class="tab-content">
                         <div class="tab-pane active" id="login">
                             <form class="form-signin" action="" method="">
-                                <input type="text" class="form-control" placeholder="Username" required>
-                                <input type="password" class="form-control" placeholder="Password" required>
-                                <input type="button" class="btn btn-lg btn-default btn-block" value="Sign In" />
+                                <input type="text" id="login-field" class="form-control" placeholder="Username" required>
+                                <input type="password" id="password-field" class="form-control" placeholder="Password" required>
+                                <input type="button" id="login-button" class="btn btn-lg btn-default btn-block" value="Sign In" />
                             </form>
                             <div id="tabs" data-tabs="tabs">
                                 <p class="text-center"><a href="#register" data-toggle="tab">Need an Account?</a></p>
                             </div>
                         </div>
                         <div class="tab-pane" id="register">
-                            <form class="form-signin" action="" method="">
+                            <form class="form-signin" action="">
                                 <input type="text" id="user-name" class="form-control" placeholder="User Name" required autofocus>
-                                <input type="email" id="user-email" class="form-control" placeholder="Emaill Address" required>
+                                <input type="email" id="user-email" class="form-control" placeholder="Email Address" required>
                                 <input type="password" id="user-pasword" class="form-control" placeholder="Password" required>
                                 <input type="button" id="signup-contact" class="btn btn-lg btn-default btn-block" value="Sign Up" />
                             </form>
@@ -57,8 +57,13 @@
     </div>
     <!-- END MODAL LOGIN WINDOW -->
     <div id="contact-book-con" class="container hidden">
-        <div class="page-header">
-            <h1 class="maingreat">Sergey's contact book</h1>
+        <div class="row">
+            <div class="col-md-3">
+                <h1 class="maingreat">Sergey's contact book</h1></div>
+            <div class="col-md-3 col-md-offset-6 navbar-btn" id="user-panel">
+            <p class="navbar-text" id="navbar-text-id"></p>
+            <button type="button" class="btn btn-default navbar-btn" id="logout-button">Log out</button>
+            </div>
         </div>
         <!-- =========================CONTACT BOOK================================ -->
         <div class="row">
@@ -149,11 +154,13 @@
                 <div class="list-group">
                 </div>
                 <!--===END LIST GROUPS//==-->
-                <center><div class="btn-group">
-                    <button id="add-contact" type="button" class="btn btn-success btn-sm">New contact</button>
-                    <button id="add-group" type="button" data-toggle="modal" data-target=".bs-example-modal-sm" class="btn btn-primary btn-sm">New group</button>
-                    <button id="delete-group-button" type="button" class="btn btn-danger btn-sm">Delete group</button>
-                </div></center>
+                <center>
+                    <div class="btn-group">
+                        <button id="add-contact" type="button" class="btn btn-success btn-sm my-style">New contact</button>
+                        <button id="add-group" type="button" data-toggle="modal" data-target=".bs-example-modal-sm" class="btn btn-primary btn-sm my-style">New group</button>
+                        <button id="delete-group-button" type="button" class="btn btn-danger btn-sm my-style">Delete group</button>
+                    </div>
+                </center>
                 <!-- start slide -->
                 <div class="modal fade bs-example-modal-sm" id="new-group-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-sm">
